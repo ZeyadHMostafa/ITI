@@ -2,6 +2,8 @@
 
 using namespace std;
 
+#define BUFFER_SIZE 20
+
 #ifdef _WIN32
 	void initTerminal(){
 		// Enable VT mode
@@ -67,18 +69,60 @@ using namespace std;
 	}
 	char getButtonCode(){
 		unsigned int x;
-		read(STDIN_FILENO, &x, 4);
+		int length=read(STDIN_FILENO, &x, 4);
+		if (length == -1){
+			return' ';
+		}
+		x=x&~(0xFFFFFFFF<<(length*8));
 
 		char k_code = matchCode(x);
 		if (k_code!= ' ') return k_code;	
-		
-		// cout << x << ' ' << endl; // used in testing
-		
-		// default return to return someting in case of 
-		// failure to identify, should probably remove
-		return x&255;
+
+		char c = x&255;
+		if (length==1 && isalnum(c)){strBufferAppend(c);}
+		return ' ';
 	}
 #endif
+
+// TODO: 
+// - [x] Create a text entry buffer
+// - [x] Add functions to access it?
+// - [x] Allow ascii letters to be entered
+// - [x] Create a new struct
+// - [ ] Add entry usingcreated buffer
+// - [ ] Add display functionality in display
+// - [ ] Add scrolling?
+
+
+char str_buffer[BUFFER_SIZE];
+char str_buffer_id=0;
+
+void strBufferRemove(){
+	if (str_buffer_id!=0){
+		str_buffer_id-=1;
+		str_buffer[str_buffer_id]=0;
+	}
+}
+
+void strBufferAppend(char c){
+	if (str_buffer_id<BUFFER_SIZE-1){
+		str_buffer[str_buffer_id]=c;
+		str_buffer_id+=1;
+		str_buffer[str_buffer_id]=0;
+	}
+}
+
+void strBufferClear(){
+	str_buffer_id=0;
+	str_buffer[str_buffer_id]=0;
+}
+
+
+void strBufferFill(string str){
+	str.copy(str_buffer,20);
+	str_buffer[str.size()]=0;
+	str_buffer_id=str.size();
+}
 
 void drawMenu(string title, string * items, int item_count, int btn_idx){
 	// title

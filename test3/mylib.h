@@ -41,9 +41,9 @@
 	#define K_D 0x425B1B
 	#define K_U 0x415B1B
 	#define K_H 0x485B1B
-	#define K_N 0x7F0A
-	#define K_E 0x7F1B
-	#define K_B 0x7F7F
+	#define K_N 0x0A
+	#define K_E 0x1B
+	#define K_B 0x7F
 #endif
 
 // color codes
@@ -60,8 +60,19 @@ void initTerminal();
 // revert_terminal
 void revertTerminal();
 
+// switch terminalmodes
+void switchTerminalMode(char terminal_mode);
+
 // switch matching code
 char matchCode(int code);
+
+void strBufferRemove();
+
+void strBufferAppend(char c);
+
+void strBufferClear();
+
+void strBufferFill(std::string str);
 
 // Draw menu with item list
 void drawMenu(std::string title, std::string * items, int item_count, int btn_idx);
