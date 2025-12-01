@@ -1,7 +1,9 @@
 // TODO switch to headers
 # include "complex.cpp"
 # include "mystring.cpp"
+# include "stack.cpp"
 
+using namespace std;
 // ---------------- Complex ----------------
 // ---------------- String -----------------
 // ----------------- List ------------------
@@ -70,8 +72,37 @@ void test_string(){
     cout << "s1+= ' nice': " << s1 <<endl;
 }
 
+void test_stack(){
+	static const int values[]= {10,20,30,40,50,60,70,80,90,100};
+	MyStack<int> stack1;
+	MyStack<int> stack2(5);
+	MyStack<int> stack3(values,3);
+	MyStack<int> stack4(&values[3],4,2);
+	MyStack<int> stack5=stack4;
+	MyStack<int> stack6(5);
+	stack6 = stack4;
+	cout<<"stack 1: "<< stack1 << endl;
+	cout<<"stack 2: "<< stack2 << endl;
+	cout<<"stack 3: "<< stack3 << endl;
+	cout<<"stack 4: "<< stack4 << endl;
+	cout<<"stack 5: "<< stack5 << endl;
+	cout<<"stack 6: "<< stack6 << endl;
+	cout << "-------" << endl;
+	stack2.push(7);
+	stack2.push(8);
+	stack5.pop();
+	cout<<"stack 2 push(7), push(8): "<< stack2 << endl;
+	cout<<"stack 2 tos: "<< stack2.get_tos() << endl;
+	cout<<"stack 3 size: "<< stack3.size() << endl;
+	cout<<"stack 4 [1]: "<< stack4[1] << endl;
+	cout<<"stack 5 pop: "<< stack5 << endl;
+	cout<<"stack 6 top: "<< stack6.top() << endl;
+	
+}
+
 int main(){
-    test_complex();
-    test_string();
+    //test_complex();
+    //test_string();
+	test_stack();
 	return 0;
 }
