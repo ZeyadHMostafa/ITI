@@ -23,6 +23,10 @@ public:
 	// Operator Overloads
 	// -Uniary
 	Complex operator-() const;
+	Complex& operator++();
+	Complex& operator--();
+	Complex operator++(int);
+	Complex operator--(int);
 
 	// -casting
 	template<typename T> operator T() const;

@@ -39,6 +39,22 @@ void Complex::set_imag(const double val){
 Complex Complex::operator-() const{
 	return Complex(-real,-imag);
 }
+Complex& Complex::operator++(){
+	real+=1;
+	return *this;
+}
+Complex& Complex::operator--(){
+	real-=1;
+	return *this;
+}
+Complex Complex::operator++(int){
+	imag+=1;
+	return *this;
+}
+Complex Complex::operator--(int){
+	imag-=1;
+	return *this;
+}
 
 template<typename T> Complex::operator T() const{
 	return T(real);

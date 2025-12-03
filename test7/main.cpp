@@ -2,6 +2,7 @@
 # include "complex.cpp"
 # include "mystring.cpp"
 # include "stack.cpp"
+# include "mylist.cpp"
 
 using namespace std;
 // ---------------- Complex ----------------
@@ -100,9 +101,56 @@ void test_stack(){
 	
 }
 
+class randomClass{
+	public:
+	int val;
+	randomClass(){
+		this->val=0;
+	}
+	randomClass(int val){
+		this->val=val;
+	}
+	randomClass(randomClass& other){
+		this->val=other.val;
+	}
+};
+
+void test_list(){
+	MyList list(10); // size specified
+	randomClass b(7);
+	char c_arr[5] ="momo";
+
+	list.push(5);
+	list.push(5.5f);
+	list.push(b);
+	// list.push(1.1.1);
+	list.push(1-4);
+	list.push("hello");
+	list.push(c_arr);
+	// list.push(1.1/);
+	// list.push(min123);
+	// list.push(1.1.1);
+	int x;
+	float y;
+	randomClass z;
+	char *c_arr2;
+	string s="intitial";
+	
+	list.get_at(x,0);
+	list.get_at(y,1);
+	list.get_at(z,2);
+	list.get_at(x,3);
+	list.get_at(s,4);
+	list.get_at(c_arr2,5);
+	cout << "x=" << x << "\ny=" << y << "\nz.val=" << z.val << endl << x << endl;
+	cout << s <<endl;
+	cout << c_arr2 << endl;
+}
+
 int main(){
     //test_complex();
     //test_string();
-	test_stack();
+	//test_stack();
+	test_list();
 	return 0;
 }

@@ -22,6 +22,7 @@ public:
 	MyStack(int size);
 	MyStack(const T * const other, unsigned int size, int tos=-2);
 	MyStack(const MyStack& other);
+	MyStack(const MyStack&& other);
 	~MyStack();
 
 	// setgets
@@ -35,6 +36,7 @@ public:
 
 	// operators
 	MyStack operator=(const MyStack& other);
+	MyStack& operator=(const MyStack&& other);
 	bool operator==(const MyStack& other) const;
 	bool operator!=(const MyStack& other) const;
 	MyStack operator+=(const T item);
@@ -92,6 +94,13 @@ template <typename T> MyStack<T>::MyStack(const MyStack& other){
 	init_from(this,other.length,other.data,other.tos);
 }
 
+template <typename T> MyStack<T>::MyStack(const MyStack&& other){
+	this.data = other.data;
+	this.size = other.size;
+	other.data=nullptr;
+	other.size=0;
+}
+
 template <typename T> MyStack<T>::~MyStack(){
 	if (this->data!=nullptr){
 		delete[] data;
@@ -123,6 +132,17 @@ template <typename T> T MyStack<T>::top(){
 // operators
 template <typename T> MyStack<T> MyStack<T>::operator=(const MyStack& other){
 	init_from(this,other.length,other.data,other.tos);
+	return *this;
+}
+
+template <typename T> MyStack<T>& MyStack<T>::operator=(const MyStack&& other){
+	this->data=other.data;
+	this->length=other.length;
+	this->tos=other.tos;
+	
+	other.data=nullptr;
+	other.length=0;
+	other.tos=0;
 	return *this;
 }
 
