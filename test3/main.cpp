@@ -63,13 +63,16 @@ void drawMagic(int s){
 
 int main(){
 
+	string input;
 	int x = 0;
 	cout << "Please enter the side length: ";
 
 	// validation check (odd and in range 1-15)
 	while ( (x<1) || (x%2==0) || (x>15) ) {
-		cin >> x;
+		cin >> input;
+		x = atoi(input.c_str());
 	}
+	cout << "side length interpreted as :" << x;
 	
 	initTerminal();
 	clearScreen();

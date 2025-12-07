@@ -20,7 +20,7 @@ char menu=M_PRI;
 extern char str_buffer[];
 
 struct Game{
-string name = "CoolGame";
+string name = "";
 int time_played;
 int rating;
 };
@@ -120,7 +120,10 @@ void setGameData(int i,string str){
 		new_game.time_played =atoi(str.c_str());
 		break;
 		case 2:
-		new_game.rating = atoi(str.c_str());
+		int x=atoi(str.c_str());
+		if (x>0 && x<5){
+			new_game.rating = x;
+		}
 		break;
 	}
 }
@@ -197,6 +200,11 @@ int main(){
 					m_pri_btns[lst_idx]();
 					break;
 					case M_NEW:
+					setGameData(lst_idx,str_buffer);
+					// final validation steps
+					if (getGameData(0).size()<3){
+						break;
+					}
 					all_games[free_game_idx]=new_game;
 					new_game=default_game;
 					free_game_idx+=1;
