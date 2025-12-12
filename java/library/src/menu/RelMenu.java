@@ -74,6 +74,7 @@ public class RelMenu{
         } catch (ItemBorrowException e) {
             System.out.println("Client already has  item");
         }
+        System.out.println("Item Borrowed Successfuly");
     }
     private void returnMenu(Scanner sc){
         int[] data = dataEntry(sc);
@@ -86,5 +87,6 @@ public class RelMenu{
         } catch (ItemBorrowException e) {
             System.out.println("client doesn't posess item");
         }
+        System.out.println("Item Returned Successfuly");
     }
 }
