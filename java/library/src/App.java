@@ -1,7 +1,8 @@
-import menu.MainMenu;
+import cli.menu.MainMenu;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        new MainMenu();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.runMenu();
     }
 }
