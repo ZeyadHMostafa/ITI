@@ -2,7 +2,8 @@ package cli.menu;
 
 import java.util.Scanner;
 
-import api.Library;
+import dao.Library;
+
 import utl.exceptions.ItemBorrowException;
 import utl.exceptions.ItemNotFoundException;
 import utl.exceptions.ItemStockException;
@@ -44,6 +45,7 @@ public class RelMenu extends ChoiceMenu{
         int[] data = dataEntry();
         try {
             library.borrowItem(data[0],data[1]);
+            System.out.println("Item Borrowed Successfuly");
         } catch (ItemNotFoundException e) {
             System.out.println("either the item or client doesn't exist");
         } catch (ItemStockException e) {
@@ -51,12 +53,12 @@ public class RelMenu extends ChoiceMenu{
         } catch (ItemBorrowException e) {
             System.out.println("Client already has  item");
         }
-        System.out.println("Item Borrowed Successfuly");
     }
     private void returnMenu(){
         int[] data = dataEntry();
         try {
             library.returnItem(data[0],data[1]);
+            System.out.println("Item Returned Successfuly");
         } catch (ItemNotFoundException e) {
             System.out.println("either the item or client doesn't exist");
         } catch (ItemStockException e) {
@@ -64,6 +66,5 @@ public class RelMenu extends ChoiceMenu{
         } catch (ItemBorrowException e) {
             System.out.println("client doesn't posess item");
         }
-        System.out.println("Item Returned Successfuly");
     }
 }

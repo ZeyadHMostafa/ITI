@@ -2,13 +2,14 @@ package cli.menu;
 
 import java.util.Scanner;
 
-import api.CRUDController;
-import api.Library;
+import cli.entery.CLIConstructors;
+import dao.CRUDController;
+import dao.Library;
+
 import obj.clients.Client;
-import obj.libraryitems.Book;
 import obj.libraryitems.LibraryItem;
-import obj.libraryitems.Magazine;
-import utl.FakeData;
+
+import dio.DataLoader;
 
 public class MainMenu extends ChoiceMenu{
     Library library;
@@ -22,15 +23,23 @@ public class MainMenu extends ChoiceMenu{
         library = new Library();
         
         clientMenu = new CRUDMenu<>(
-            new CRUDController<>(library.getClientContainer(),Client::constructFromCLI,"Client"),
-            "Client CRUD","client",sc);
+            new CRUDController<>(
+                library.getClientContainer(),
+                CLIConstructors::constructClientFromCLI,
+                library::canModifyClient,
+                "Client"),
+                "Client CRUD","client",sc);
         
         itemMenu = new CRUDMenu<>(
-            new CRUDController<>(library.getItemContainer(),this::constructItemFromCLI,"Item"),
-            "Item CRUD","item",sc);
+            new CRUDController<>(
+                library.getItemContainer(),
+                this::constructItemFromCLI,
+                library::canModifyItem,
+                "Item"),
+                "Item CRUD","item",sc);
         
         relMenu = new RelMenu(library, sc);
-        FakeData.addFakeData(library);
+        DataLoader.addFakeData(library);
 
         options.add(new Choice("manage library clients", clientMenu::runMenu));
         options.add(new Choice("manage library items", itemMenu::runMenu));
@@ -51,10 +60,10 @@ public class MainMenu extends ChoiceMenu{
         LibraryItem item = null;
         switch(input){
             case "1":
-                item = Magazine.constructFromCLI(sc, id);
+                item = CLIConstructors.constructMagazineFromCLI(sc, id);
                 break;
             case "2":
-                item = Book.constructFromCLI(sc, id);
+                item = CLIConstructors.constructBookFromCLI(sc, id);
                 break;
         }
         

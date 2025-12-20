@@ -26,6 +26,7 @@ public class ChoiceMenu {
     
     protected void updateOptionString(){
         StringBuffer optionString = new StringBuffer();
+        optionString.append("\n-----------------------------------\n");
         optionString.append(title+":\n");
         optionString.append("0) Exit\n");
         for (int i=0; i<options.size(); i++){

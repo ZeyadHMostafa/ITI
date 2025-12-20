@@ -1,6 +1,6 @@
 package dio;
 
-import api.Library;
+import dao.Library;
 import obj.clients.Client;
 import obj.libraryitems.Book;
 import obj.libraryitems.Magazine;

@@ -2,7 +2,7 @@ package cli.menu;
 
 import java.util.Scanner;
 
-import api.CRUDController;
+import dao.CRUDController;
 import utl.interfaces.Identifiable;
 
 public class CRUDMenu<Entity extends Identifiable> extends ChoiceMenu{
@@ -35,27 +35,30 @@ public class CRUDMenu<Entity extends Identifiable> extends ChoiceMenu{
     void create() throws IllegalArgumentException{
         int id = readId();
         if (id!=-1){controller.create(sc,id);}
+        System.out.println(entityName + " added Successfuly!");
     }
 
     void review() throws IllegalArgumentException{
         int id = readId();
-        if (id!=-1){controller.review(id);}
+        if (id!=-1){System.out.println(controller.review(id));}
     }
 
     void update() throws IllegalArgumentException{
         int id = readId();
         if (id!=-1){controller.update(sc,id);}
+        System.out.println(entityName + " updated Successfuly!");
     }
 
     void delete() throws IllegalArgumentException{
         int id = readId();
         if (id!=-1){controller.delete(id);}
+        System.out.println(entityName + " deleted Successfuly!");
     }
 
     void search() throws IllegalArgumentException{
         String input;
         System.out.println("Please enter Search regex:");
         input = sc.nextLine();
-        controller.search(input);
+        System.out.println(controller.search(input));
     }
 }

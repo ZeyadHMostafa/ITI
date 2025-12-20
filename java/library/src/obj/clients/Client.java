@@ -1,6 +1,5 @@
 package obj.clients;
 
-import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -23,9 +22,6 @@ public class Client implements Identifiable{
     public void addBorrowedItem(LibraryItem item){borrowedItems.put(item.getId(),item);}
     public void removeBorrowedItem(LibraryItem item){borrowedItems.remove(item.getId());}
 
-    //should do this for the others too, but mail is most important
-    final static String mailRegex = "[a-zA-z0-9]+@[a-zA-z0-9]+(\\.[a-zA-z]+)*";
-
     public String getClientDetails(){
         StringBuffer details = new StringBuffer();
         details.append("-----------------------\n"
@@ -44,26 +40,5 @@ public class Client implements Identifiable{
         this.name= name;
         this.mail = mail;
         borrowedItems = new TreeMap<>();
-    }
-
-    public static Client constructFromCLI(Scanner sc, int id){
-        String input;
-        String name;
-        String mail;
-
-        System.out.println("Please enter Client Name");
-        input = sc.nextLine();
-        if (!input.matches("[a-zA-z ]+")) {
-            throw new IllegalArgumentException("please only use alphabetical letters");
-        }
-        name = input;
-
-        System.out.println("Please Client Mail");
-        input = sc.nextLine();
-        if (!input.matches(mailRegex)) {
-            throw new IllegalArgumentException("Bad Input. Input format: user@website.domain");
-        }
-        mail = input;
-        return new Client(id, name, mail);
     }
 }
