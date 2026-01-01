@@ -1,0 +1,9 @@
+
+p, div, span{
+	/* Note I added a fallback because it refuses to render on my browser */
+	font-family: "Lucida Calligraphy", sans-serif;
+}
+
+div h1{
+	text-align: center;
+}

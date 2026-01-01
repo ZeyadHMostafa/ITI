@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> CSS magic</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="header" style="width: 100%; height: 60px; background-color: red;">
+		<h1>This is the page header</h1>
+	</div>
+	<span id="linksbar" style = "width: 25%; background-color: gray; float: left;">
+		<div id="loginform" >
+			User name: <input type="text"/>
+			</br>
+			Password: <input type="password"/>
+			<br/>
+			<input type="checkbox" /> remember me
+			<br/>
+			<button>login</button>
+		</div>
+		<h2> site menu</h2>
+		<ul class="none-bullet-list">
+			<li><a href="#">link1</a></li>
+			<li><a href="#">link2</a></li>
+			<li><a href="#">link3</a></li>
+			<li><a href="#">link4</a></li>
+			<li><a href="#">link5</a></li>
+		</ul>
+	</span>
+	<span id="content" style="width: 75%; height: 70%; background-color: pink; float: left;">
+		<h2> about us</h2>
+		<p id="aboutus">
+			This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph This is a paragraph.
+		</p>
+		
+		<div id="titles">
+			<span class="tabled-border"> title1</span>
+			<span class="tabled-border"> title2</span>
+			<span class="tabled-border"> title3</span>
+		</div>
+
+	</span>
+
+<style>
+	.none-bullet-list{
+		list-style-type: none;
+	}
+	#linksbar li>a{
+		background-color: pink;
+		color: red;
+		text-decoration:none;
+	}
+	#linksbar li>a:hover{
+		background-color: red;
+		color: pink;
+		text-decoration:none;
+	}
+	span#content>h2+p{
+		font-weight: bold;
+		font-size: 12px;
+	}
+	div#loginform{
+		border: 2px dashed rgb(20, 70, 60);
+
+	}
+	input[type=text]{
+		background-color: yellow;
+	}
+	input[type=text]:focus{
+		background-color: white;
+	}
+	.tabled-border{
+		display: table-cell;
+		padding: 5px;
+		border: 2px solid black;
+		/* no difference */
+	}
+	span p::after{
+		content: "read this";
+		color: yellow;
+	}
+</style>
+<style>
+	/* p#aboutus{
+		color: red;
+	}
+	span#content>p#aboutus{
+		color: yellow;
+	} */
+	/*
+	Since there is only one elment fulfilling this requirement
+	The one with more specifity is applied (2,0,2) > (1,0,1)
+	*/
+	
+	p#aboutus {
+		color: red !important;
+	}
+	span#content>p#aboutus{
+		color: yellow;
+	}
+	/* 
+	After adding important, it increases the priority of the value
+	*/
+</style>
+
+</body>
+</html>

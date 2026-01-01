@@ -1,0 +1,21 @@
+p:hover{
+	font-weight: bold;
+}
+p:first-of-type{
+	color: red;
+}
+p:first-child{
+	color: midnightblue;
+}
+p:nth-child(2){
+	background-color:burlywood;
+}
+p:last-child{
+	background-color:darkgrey;
+}
+div:nth-of-type(2){
+	background-color:chocolate;
+}
+:focus{
+	background-color:chocolate;
+}

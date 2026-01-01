@@ -1,0 +1,27 @@
+/*  
+EM units are based on the direct parent
+While REM unitsare based on the HTML page */
+
+/* 1) */
+p{color: red;}
+
+/* 2) */
+p, div{background-color: aqua; }
+
+/* 3) */
+div#myDiv>p.mainClass{background-color: blue }
+
+/* 4) */
+div p{background-color: blueviolet; }
+
+/* 5) */
+input[type=text].myClass{background-color: yellow; }
+
+/* 6) */
+div+span{background-color: chocolate; }
+
+/* 7) */
+p.myClass{color: aqua;}
+
+/* 8) */
+div#myDiv{background-color: crimson;}
