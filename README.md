@@ -1,6 +1,4 @@
 # ITI
-codes written for the ITI program
-- test1: fancy terminal output
-- test2: terminal i/o
-- test3: magic square
-- test4: 
+### codes written for the ITI program
+Note that there is no local version of this repository with all of the files in the same order.
+As such, this is being used more as a file storage similar to google drive rather than as a git repo.
