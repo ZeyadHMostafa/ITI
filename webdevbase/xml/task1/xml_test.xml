@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<library 
+    location="Central City" 
+    description="Main branch library"
+    librarian="John Doe">
+
+    <book id="b1"
+        title="Sample Book Title" 
+        isbn="000-00-00000-00-0" 
+        author="Jane Smith">
+		<preface value="An introductory note about the book." />
+
+        <part id="p1"
+			title="Part One">
+            <chapter
+			id="c1"
+			title="Chapter 1"
+			summary="Introduction to the topic">
+                <section id="s1">
+                    <paragraph id="para1">
+                        <![CDATA[This is the first paragraph.
+line 1
+line 2
+]]>
+                    </paragraph>
+					<!-- pargraph 2, etc ... -->
+                </section>
+				<!-- section 2, etc ... -->
+            </chapter>
+			<!-- chapter 2, etc ... -->
+        </part>
+		<!-- part 2, etc ... -->
+    </book>
+	<!-- book 2, etc ... -->
+</library>

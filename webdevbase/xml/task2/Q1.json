@@ -1,0 +1,33 @@
+{
+  "location": "Central City",
+  "description": "Main branch library",
+  "librarian": "John Doe",
+  "books": [
+    {
+      "title": "Sample Book Title",
+      "isbn": "000-00-00000-00-0",
+      "author": "Jane Smith",
+      "preface": "An introductory note about the book.",
+      "parts": [
+        {
+          "title": "Part One",
+          "chapters": [
+            {
+              "title": "Chapter 1",
+              "summary": "Introduction to the topic",
+              "sections": [
+				[
+					"This is the first paragraph in section 1.\nline 1\nline 2\n",
+					"This is the second paragraph in section 1.\nline 1\nline 2\n"
+				],
+				[
+					"This is the first paragraph in section 2.\nline 1\nline 2\n"
+				]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
